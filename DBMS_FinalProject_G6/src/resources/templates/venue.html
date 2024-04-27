@@ -1,9 +1,35 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
     <head>
-
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>場地</title> <!-- 換成場地的名字 -->
+        <style>
+            body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            margin-top: 150px;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            align-items: flex-start;
+            margin-top: 20px;
+            
+        }
+        </style>
     </head>
     <body>
-        
+        <div id='calendar'></div>
+        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var calendarEl = document.getElementById('calendar');
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth'
+                });
+                calendar.render();
+            });
+        </script>
     </body>
 </html>
