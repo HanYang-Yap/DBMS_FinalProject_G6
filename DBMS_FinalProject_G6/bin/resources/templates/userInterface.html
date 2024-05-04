@@ -62,6 +62,30 @@
             margin-left: 40px;
             margin-top: 0px;
         }
+
+        .content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start; /* 將子元素上對齊 */
+        margin-top: 20px; /* 可以根據需要調整上邊距 */
+        }
+
+        .rights-history {
+            margin-top: 20px;
+            height: 200px; /* 設定表格區域的高度，使其可以滾動 */
+            overflow-y: auto; /* 允許垂直滾動 */
+            margin: 0 auto; /* 使用 margin 屬性來水平置中 */
+            width: 50%; /* 設置表格寬度，可以根據需要進行調整 */
+        }
+        .notification-button {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
         .reservation-history {
             margin-top: 20px;
             height: 200px; /* 設定表格區域的高度，使其可以滾動 */
@@ -136,14 +160,43 @@
                 <div class="button-text"><p>日程 Schedule</p></div>
             </div>
         </div>
-        <div class="user-details">
-            <h2>使用者資料 User Information</h2>
-            <p>使用者名稱：Chien Starry</p>
-            <p>學號或教職員號碼：111306031</p>
-            <p>系級：資管二甲</p>
-            <p>本學期逾期次數：0</p>
-            <p>權利瀏覽：游泳館[月票；直至2024/05/31]</p>
+
+        <div class="content">
+                <div class="user-details">
+                    <h2>使用者資料 User Information</h2>
+                    <p>使用者名稱：Chien Starry</p>
+                    <p>學號或教職員號碼：111306031</p>
+                    <p>系級：資管二甲</p>
+                    <p>本學期逾期次數：0</p>
+                </div>
+
+            <div class="rights-history">
+                <h2>權利瀏覽 User Rights</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>地點</th>
+                            <th>性質</th>
+                            <th>申請學期</th>
+                            <th>有效期間</th>
+                            <th>通知</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>游泳館</td>
+                            <td>月票</td>
+                            <td>112-2</td>
+                            <td>直至2024/05/31</td>
+                            <td><button class="notification-button" onclick="toggleNotification(this)">Announce</button></td>
+                        </tr>
+                        <!-- 其他權利項目 -->
+                    </tbody>
+                </table>
+            </div>
         </div>
+
+        
         <div class="reservation-history">
             <h2>歷史資料 History Records</h2>
             <table>
@@ -195,6 +248,17 @@
         function navigateToNotification() {
             // 顯示通知的代碼
         }
+
+        function toggleNotification(button) {
+        if (button.style.backgroundColor === 'green') {
+            alert('已完成設定');
+            button.style.backgroundColor = 'gray';
+        } else {
+            alert('已取消通知');
+            button.style.backgroundColor = 'green';
+        }
+        }
+</script>
     </script>
 </body>
 </html>
