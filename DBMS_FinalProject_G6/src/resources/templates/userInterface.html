@@ -9,64 +9,68 @@
             background-color: white;
             color: black;
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
         .user-info {
             display: flex;
             align-items: center;
-            padding: 10px;
-            background-color: lightblue;
+            justify-content: space-between;
+            background-color: rgb(225, 239, 243);
+            width: 98%;
+            height: 50px;
+            padding: 0 20px;
         }
         .user-icon {
-            width: 50px;
-            height: 50px;
-            background-color: #ccc;
-            margin-right: 10px;
+            width: 25px;
+            height: 25px;
+            margin-left: 20px;
         }
         .notification-icon {
-            width: 30px;
-            height: 30px;
-            background-color: lightgrey;
-            border-radius: 50%;
+            float: right;
+            width: 25px;
+            height: 25px;
             margin-right: 10px;
-            position: relative;
-        }
-        .notification-icon.unread::after {
-            content: "!";
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background-color: red;
-            color: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            text-align: center;
-            line-height: 20px;
-        }
-        .notification-panel {
-            display: none;
-            position: absolute;
-            top: 70px;
-            right: 10px;
-            width: 300px;
-            background-color: white;
-            border: 1px solid #ccc;
-            padding: 10px;
-            z-index: 999;
         }
         .buttons {
             display: flex;
             justify-content: space-around;
             margin-top: 20px;
         }
+        .button-container {
+            width: 400px;
+            height: 100px;
+            background-color: rgb(192, 226, 238);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .button-container:hover {
+            background-color: rgb(177, 215, 230);
+        }
+        .button-text {
+            font-size: 25px;
+            margin-left: 10px;
+        }
+        .button-icon {
+            width: 50px;
+            height: 50px;
+            margin-left: 10px;
+        }
         .user-details {
-            margin-top: 20px;
+            margin-left: 40px;
+            margin-top: 0px;
         }
         .reservation-history {
             margin-top: 20px;
+            height: 200px; /* 設定表格區域的高度，使其可以滾動 */
+            overflow-y: auto; /* 允許垂直滾動 */
+            margin: 0 auto; /* 使用 margin 屬性來水平置中 */
+            width: 95%; /* 設置表格寬度，可以根據需要進行調整 */
         }
         table {
-            width: 100%;
+            width: 90%;
             border-collapse: collapse;
         }
         th, td {
@@ -75,7 +79,7 @@
             text-align: center;
         }
         th {
-            background-color: lightblue;
+            background-color: rgb(200, 233, 244);
         }
         .pay-button {
             background-color: green;
@@ -98,35 +102,42 @@
 <body>
     <header>
         <div class="user-info">
-            <div class="user-icon"></div>
-            <div class="user-details">
-                <p>使用者名稱：Chien Starry</p>
-                <p>身分：Student</p>
+            <a href="user_page.html" onclick="navigateToUserPage()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-person-circle user-icon" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                </svg>
+            </a>
+            <div class="user-info">
+                <p>Hi! Chien Starry (Student)</p>
             </div>
-            <div class="notification-icon"></div>
-        </div>
-        <div class="notification-panel">
-            <h2>系統通知</h2>
-            <ul>
-                <!-- 通知項目 -->
-                <li>
-                    <div class="notification-icon"></div>
-                    <div class="notification-details">
-                        <p>繳費通知</p>
-                        <p>標題：完成場地繳費</p>
-                    </div>
-                </li>
-                <!-- 其他通知項目 -->
-            </ul>
-        </div>
+            <div class="notification-icon">
+                <a href="user_page.html" onclick="navigateToNotification()">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-bell-fill notification-icon " viewBox="0 0 16 16">
+                        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
+                    </svg>
+                </a>
+            </div>   
+        </div> 
     </header>
     <main>
         <div class="buttons">
-            <button onclick="goToReservation()">預約 Reserve</button>
-            <button onclick="showSchedule()">日程 Schedule</button>
+            <div class="button-container" onclick="goToReservation()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square button-icon" viewBox="0 0 16 16">
+                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                </svg>
+                <div class="button-text">預約 Reserve</div>
+            </div>
+            <div class="button-container" onclick="navigateToSchedule()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-check-fill button-icon" viewBox="0 0 16 16">
+                    <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2m-5.146-5.146-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708"/>
+                </svg>
+                <div class="button-text"><p>日程 Schedule</p></div>
+            </div>
         </div>
         <div class="user-details">
-            <h2>使用者資料</h2>
+            <h2>使用者資料 User Information</h2>
             <p>使用者名稱：Chien Starry</p>
             <p>學號或教職員號碼：111306031</p>
             <p>系級：資管二甲</p>
@@ -138,13 +149,13 @@
             <table>
                 <thead>
                     <tr>
-                        <th>日期</th>
-                        <th>時間</th>
-                        <th>場地</th>
-                        <th>預約序號</th>
-                        <th>狀態</th>
-                        <th>金額</th>
-                        <th>繳費</th>
+                        <th>日期 DATE</th>
+                        <th>時間 TIME</th>
+                        <th>場地 VANUE</th>
+                        <th>預約序號 RESERVATION_NUM</th>
+                        <th>狀態 STATUS</th>
+                        <th>金額 AMOUNT</th>
+                        <th>繳費 PAYMENT</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -163,6 +174,7 @@
             </table>
         </div>
     </main>
+    
     <script>
         function openPayment() {
             // 打開繳費視窗的代碼
@@ -172,8 +184,16 @@
             // 跳轉至預約頁面的代碼
         }
 
-        function showSchedule() {
-            // 顯示日程的代碼
+        function navigateToSchedule() {
+            // 跳轉至查看預約頁面的代碼
+        }
+
+        function navigateToUserPage() {
+            // 跳轉至使用者頁面的代碼
+        }
+
+        function navigateToNotification() {
+            // 顯示通知的代碼
         }
     </script>
 </body>
