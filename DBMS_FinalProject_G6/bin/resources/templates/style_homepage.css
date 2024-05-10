@@ -61,7 +61,7 @@ body {
   
   /*header section*/
   .hero_area {
-    background-image: url(/Users/hy/Documents/Y2S2/Database_Management/DBMS_FinalProject/Image/NCCU_SportVenue.png);
+    background-image: url(https://github.com/HanYang-Yap/DBMS_FinalProject_G6/blob/master/DBMS_FinalProject_G6/src/resources/templates/NCCU_SportVenue.png);
     background-size: cover;
   }
   
