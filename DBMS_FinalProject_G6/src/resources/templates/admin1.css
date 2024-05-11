@@ -1,0 +1,67 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  header {
+    display: flex;
+    align-content: flex-start;
+    justify-content: space-between;
+    background-color: lemonchiffon;
+    padding: 4px 16px;
+  }
+  .user_icon {
+    display: flex;
+    align-items: center;
+    padding: 0px 8px;
+  }
+
+  img {
+    height: 30px;
+    width: auto;
+    margin: 8px;
+    /* border: 1px solid black; */
+    border-radius: 50%;
+  }
+  .main_sec {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .title {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+  }
+  h2,
+  h3 {
+    margin: 16px;
+  }
+  h3.add_btn {
+    padding: 4px 8px;
+    /* border: 1px solid lightgray; */
+    border-radius: 5px;
+    background-color: lemonchiffon;
+    box-shadow: 1px 3px 5px #ccc;
+  }
+  h3.add_btn:hover {
+    cursor: pointer;
+    box-shadow: 2px 5px 8px #aaa;
+  }
+  table {
+    border-collapse: collapse; /* 合并边框 */
+    width: 90%; /* 表格宽度为父容器的100% */
+  }
+
+  table,
+  th,
+  td {
+    border: 1px solid #aaa; /* 设置表格、表头和表格数据的边框样式 */
+    padding: 8px; /* 设置单元格内边距 */
+  }
+
+  th {
+    background-color: lemonchiffon; /* 设置表头背景颜色 */
+    text-align: left; /* 左对齐表头文本 */
+  }
+}
