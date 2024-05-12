@@ -50,18 +50,17 @@ body {
   }
   table {
     border-collapse: collapse; /* 合并边框 */
-    width: 90%; /* 表格宽度为父容器的100% */
+    width: 90%;
   }
 
   table,
   th,
   td {
-    border: 1px solid #aaa; /* 设置表格、表头和表格数据的边框样式 */
-    padding: 8px; /* 设置单元格内边距 */
+    border: 1px solid #aaa;
+    padding: 8px;
   }
 
   th {
-    background-color: lemonchiffon; /* 设置表头背景颜色 */
-    text-align: left; /* 左对齐表头文本 */
+    background-color: lemonchiffon;
   }
 }
