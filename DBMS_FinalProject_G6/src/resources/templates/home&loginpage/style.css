@@ -62,7 +62,7 @@ body {
   /*header section*/
   
   .hero_area {
-    background-image: url(/Image/NCCU_SportVenue.png);
+    background-image: url(../home&loginpage/Image/NCCU_SportVenue.png);
     background-size: cover;
   }
   
