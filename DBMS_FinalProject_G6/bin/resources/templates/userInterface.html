@@ -121,6 +121,41 @@
             cursor: pointer;
             border-radius: 4px;
         }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
     </style>
 </head>
 <body>
@@ -226,12 +261,55 @@
                 </tbody>
             </table>
         </div>
+
+        <!-- 繳費彈出視窗 -->
+<div id="paymentModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>繳費</h2>
+        <div>
+            <p>申請序號: <span id="modalReservationNumber"></span></p>
+            <p>金額: <span id="modalAmount"></span></p>
+            <label>繳費方式：</label><br>
+            <input type="radio" id="cash" name="paymentMethod" value="cash">
+            <label for="cash">現金支付</label><br>
+            <input type="radio" id="linePay" name="paymentMethod" value="linePay">
+            <label for="linePay">Line Pay</label><br>
+            <input type="radio" id="visa" name="paymentMethod" value="visa">
+            <label for="visa">Visa 信用卡</label><br><br>
+            <button id="completePayment" style="background-color: green; color: white;">完成繳費</button>
+        </div>
+    </div>
+</div>
+
     </main>
     
     <script>
         function openPayment() {
-            // 打開繳費視窗的代碼
+            // 取得彈出視窗元素
+            var modal = document.getElementById("paymentModal");
+
+            // 顯示彈出視窗
+            modal.style.display = "block";
         }
+
+        // 取得關閉按鈕元素
+        var closeBtn = document.getElementsByClassName("close")[0];
+
+        // 當用戶點擊關閉按鈕時，關閉視窗
+        closeBtn.onclick = function () {
+            var modal = document.getElementById("paymentModal");
+            modal.style.display = "none";
+        }
+
+        // 當用戶點擊任何位置時，如果是在彈出視窗之外的地方，關閉視窗
+        window.onclick = function (event) {
+            var modal = document.getElementById("paymentModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
 
         function goToReservation() {
             // 跳轉至預約頁面的代碼
