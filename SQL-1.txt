@@ -1,0 +1,21 @@
+CREATE SCHEMA `1122dbms` ;
+
+CREATE TABLE `1122dbms`.`user` (
+  `User_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `User_Name` VARCHAR(45) NOT NULL,
+  `Identity` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`User_id`),
+  UNIQUE INDEX `User_id_UNIQUE` (`User_id` ASC) VISIBLE);
+
+CREATE TABLE `1122dbms`.`user_right` (
+  `User_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `Right_Type` VARCHAR(20) NOT NULL,
+  `Right_Date` DATE NOT NULL,
+  `Right_ExpiredDate` DATE NOT NULL,
+  PRIMARY KEY (`User_id`),
+  UNIQUE INDEX `User_id_UNIQUE` (`User_id` ASC) VISIBLE,
+  CONSTRAINT `User_id`
+    FOREIGN KEY (`User_id`)
+    REFERENCES `1122dbms`.`user` (`User_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
